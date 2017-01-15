@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Jul Dec 10 18:55:30 2016 Julian Ladjani
-** Last update Jan Jan 15 21:36:19 2017 Julian Ladjani
+** Last update Jan Jan 15 23:33:43 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -88,7 +88,7 @@ t_int_tab	move_dir(t_int_tab tab)
   return (tab);
 }
 
-t_int_tab	action_bonus(t_int_tab tab, sfEvent event)
+t_int_tab	action_bonus(t_int_tab tab)
 {
   tab = move_updown(tab);
   tab = move_rightleft(tab);

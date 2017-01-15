@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Jan Jan 15 21:18:28 2017 Julian Ladjani
-** Last update Jan Jan 15 23:31:43 2017 Julian Ladjani
+** Last update Jan Jan 15 23:33:36 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -26,16 +26,15 @@ int			my_mouse(t_int_tab tab)
 
 t_int_tab		my_game(t_int_tab tab)
 {
-  sfColor		color;
   t_my_raycast		rayval;
   int			type;
 
-  rayval = raycast(tab, rayval, x);
+  rayval = raycast(tab, rayval, tab.buffer->width / 2);
   type = tab.tab[rayval.mappos.x][rayval.mappos.y];
   if (type == 16)
-    sfRenderWindow_close(window);
+    sfRenderWindow_close(tab.window);
   else if (type > 9 && type < 16)
-    tab.tab[rayval.mappos.x][rayval.mappos.y] == 0;
+    tab.tab[rayval.mappos.x][rayval.mappos.y] = 0;
   return (tab);
 }
 
@@ -52,7 +51,7 @@ t_int_tab		my_window2(sfRenderWindow *window, sfSprite *sprite,
   while (my_event(tab) == 1)
     {
       init_framebuffer(tab.buffer);
-      tab = action_bonus(tab, event);
+      tab = action_bonus(tab);
       if (sfMouse_isButtonPressed(sfMouseLeft))
 	my_game(tab);
       sfMouse_setPosition(tab.moupos, NULL);

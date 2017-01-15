@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Mar Dec 6 17:39:54 2016 Julian Ladjani
-** Last update Jan Jan 15 23:30:05 2017 Julian Ladjani
+** Last update Jan Jan 15 23:33:55 2017 Julian Ladjani
 */
 
 #ifndef MY_H_
@@ -103,7 +103,7 @@ char				*my_realloc(char *str, int lenght);
 t_int_tab			calc_line_lenght(t_int_tab tab);
 t_int_tab			parse_my_int(char *buff);
 t_int_tab			read_it(char *path);
-t_int_tab			action_bonus(t_int_tab tab, sfEvent event);
+t_int_tab			action_bonus(t_int_tab tab);
 t_int_tab			check_bonus(t_int_tab tab);
 t_int_tab			my_init(t_int_tab tab);
 t_int_tab			player_pos(t_int_tab tab);
