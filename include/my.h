@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Mar Dec 6 17:39:54 2016 Julian Ladjani
-** Last update Jan Jan 15 20:04:01 2017 Julian Ladjani
+** Last update Jan Jan 15 22:47:33 2017 Julian Ladjani
 */
 
 #ifndef MY_H_
@@ -50,10 +50,12 @@ typedef struct			s_my_raycast
 typedef struct			s_int_tab
 {
   	int			**tab;
+  	sfRenderWindow		*window;
   	int			xlenght;
   	int			ylenght;
   	sfVector2i		mapsize;
 	sfVector2f		pos;
+  	sfVector2i		moupos;
   	sfVector2f		dir;
   	sfVector2f		plane;
   	float			walk;
@@ -61,16 +63,19 @@ typedef struct			s_int_tab
   	float			run;
   	t_my_framebuffer	*buffer;
  	sfColor			*color;
+  	sfColor			colorreset;
 }				t_int_tab;
 
 void				my_put_pixel(t_my_framebuffer *buffer, int x,
 					     int y, sfColor color);
 void				my_draw_line(t_my_framebuffer *buffer, sfVector2i from,
 					     sfVector2i to, sfColor color);
-void				my_draw_line_case_2(t_my_framebuffer *buffer, sfVector2i from,
-						    sfVector2i to, sfColor color);
-void				my_draw_line_case_1(t_my_framebuffer *buffer, sfVector2i from,
-						    sfVector2i to, sfColor color);
+void				my_draw_line_case_2(t_my_framebuffer *buffer,
+						    sfVector2i from, sfVector2i to,
+						    sfColor color);
+void				my_draw_line_case_1(t_my_framebuffer *buffer,
+						    sfVector2i from, sfVector2i to,
+						    sfColor color);
 void				set_sprite(t_my_framebuffer *buffer,
 					   sfSprite *sprite, sfTexture *texture);
 void				my_window(sfRenderWindow *window, sfSprite *sprite,
@@ -85,9 +90,11 @@ int				tab_number(char *buff);
 int				*set_in_intab(char *buff, int *tab);
 int				char_number(char *buff);
 int				my_getnbrprintf(char *str);
+int				my_mouse(t_int_tab tab);
 int				my_printf(char *str, ...);
 int				draw_wireframe(t_int_tab tab);
 int				check_buffer(char *buff);
+int				my_event(t_int_tab tab);
 int				windows(t_int_tab tab);
 int				my_strcmp(char *s1, char *s2, int n);
 
@@ -100,11 +107,14 @@ t_int_tab			action_bonus(t_int_tab tab, sfEvent event);
 t_int_tab			check_bonus(t_int_tab tab);
 t_int_tab			my_init(t_int_tab tab);
 t_int_tab			player_pos(t_int_tab tab);
+t_int_tab			my_window2(sfRenderWindow *window,
+					   sfSprite *sprite,
+				  t_int_tab tab, sfTexture *texture);
 
 t_my_raycast			raycast(t_int_tab tab, t_my_raycast rayval, int x);
 t_my_raycast			calc_sidedist(t_my_raycast rayval);
 t_my_raycast			calc_dda(t_int_tab tab, t_my_raycast rayval);
-t_my_raycast			calc_line(t_my_raycast rayval, int x);
+t_my_raycast			calc_line(t_int_tab tab, t_my_raycast rayval, int x);
 
 t_my_framebuffer		*my_framebuffer_create(int width, int height);
 

@@ -5,7 +5,7 @@
 ## Login   <julian.ladjani@epitech.net>
 ##
 ## Started on  Mon Nov  7 16:31:28 2016 julian ladjani
-## Last update Jan Jan 15 20:14:41 2017 Julian Ladjani
+## Last update Jan Jan 15 22:31:05 2017 Julian Ladjani
 ##
 
 CC 		=	gcc -O2
@@ -13,6 +13,7 @@ CC 		=	gcc -O2
 SRC		=	src/my_draw_line.c				\
 			src/my_put_pixel.c				\
 			src/window/windows.c				\
+			src/window/windows2.c				\
 			src/my_parallel_projection.c			\
 			src/parseur/parseur.c				\
 			src/parseur/parseur2.c				\

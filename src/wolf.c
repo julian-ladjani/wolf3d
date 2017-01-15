@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  May Dec 8 17:35:32 2016 Julian Ladjani
-** Last update Jan Jan 15 17:46:18 2017 Julian Ladjani
+** Last update Jan Jan 15 21:34:37 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -70,7 +70,9 @@ int			windows(t_int_tab tab)
   sprite = sfSprite_create();
   texture = sfTexture_create(mode.width, mode.height);
   tab.buffer = buffer;
+  tab.window = window;
   tab = my_init(tab);
+  sfMouse_setPosition(tab.moupos, NULL);
   draw_wireframe(tab);
   set_sprite(buffer, sprite, texture);
   my_window(window, sprite, tab, texture);

@@ -5,18 +5,12 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Jul Dec 10 18:55:30 2016 Julian Ladjani
-** Last update Jan Jan 15 17:36:02 2017 Julian Ladjani
+** Last update Jan Jan 15 21:36:19 2017 Julian Ladjani
 */
 
 #include "my.h"
 
-t_int_tab	bonus_reset(t_int_tab tab)
-{
-
-  return (tab);
-}
-
-t_int_tab	move_updown(t_int_tab tab, sfEvent event)
+t_int_tab	move_updown(t_int_tab tab)
 {
   float		speed;
 
@@ -41,7 +35,7 @@ t_int_tab	move_updown(t_int_tab tab, sfEvent event)
   return (tab);
 }
 
-t_int_tab	move_rightleft(t_int_tab tab, sfEvent event)
+t_int_tab	move_rightleft(t_int_tab tab)
 {
   float		speed;
 
@@ -66,14 +60,14 @@ t_int_tab	move_rightleft(t_int_tab tab, sfEvent event)
   return (tab);
 }
 
-t_int_tab	move_dir(t_int_tab tab, sfEvent event)
+t_int_tab	move_dir(t_int_tab tab)
 {
   float		dirtmp;
   float		planetmp;
 
   dirtmp = tab.dir.x;
   planetmp = tab.plane.x;
-  if (sfKeyboard_isKeyPressed(sfKeyA))
+  if (sfKeyboard_isKeyPressed(sfKeyA) || my_mouse(tab) == 1)
     {
       tab.dir.x = tab.dir.x * cos(tab.rotspeed) - tab.dir.y * sin(tab.rotspeed);
       tab.dir.y = dirtmp * sin(tab.rotspeed) + tab.dir.y * cos(tab.rotspeed);
@@ -82,7 +76,7 @@ t_int_tab	move_dir(t_int_tab tab, sfEvent event)
       tab.plane.y = planetmp * sin(tab.rotspeed) +
 	  tab.plane.y * cos(tab.rotspeed);
     }
-  else if (sfKeyboard_isKeyPressed(sfKeyE))
+  else if (sfKeyboard_isKeyPressed(sfKeyE) || my_mouse(tab) == 2)
     {
       tab.dir.x = tab.dir.x * cos(-tab.rotspeed) - tab.dir.y * sin(-tab.rotspeed);
       tab.dir.y = dirtmp * sin(-tab.rotspeed) + tab.dir.y * cos(-tab.rotspeed);
@@ -96,8 +90,8 @@ t_int_tab	move_dir(t_int_tab tab, sfEvent event)
 
 t_int_tab	action_bonus(t_int_tab tab, sfEvent event)
 {
-  tab = move_updown(tab, event);
-  tab = move_rightleft(tab, event);
-  tab = move_dir(tab, event);
+  tab = move_updown(tab);
+  tab = move_rightleft(tab);
+  tab = move_dir(tab);
   return (tab);
 }

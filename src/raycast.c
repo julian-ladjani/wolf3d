@@ -5,7 +5,7 @@
 ** Login   <julian.ladjani@epitech.net>
 **
 ** Started on  Thu Jan 12 13:21:47 2017 julian ladjani
-** Last update Jan Jan 15 03:07:00 2017 Julian Ladjani
+** Last update Jan Jan 15 21:15:21 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -26,7 +26,7 @@ t_my_raycast	raycast(t_int_tab tab, t_my_raycast rayval, int x)
       / (rayval.raydir.y * rayval.raydir.y));
   rayval = calc_sidedist(rayval);
   rayval = calc_dda(tab, rayval);
-  rayval = calc_line(rayval, x);
+  rayval = calc_line(tab, rayval, x);
   return (rayval);
 }
 
@@ -81,7 +81,7 @@ t_my_raycast	calc_dda(t_int_tab tab, t_my_raycast rayval)
   return (rayval);
 }
 
-t_my_raycast	calc_line(t_my_raycast rayval, int x)
+t_my_raycast	calc_line(t_int_tab tab, t_my_raycast rayval, int x)
 {
   int		lineheight;
 
@@ -94,10 +94,10 @@ t_my_raycast	calc_line(t_my_raycast rayval, int x)
   lineheight = (int)(SCREEN_HEIGHT / rayval.perpwalldist);
   rayval.from.x = x;
   rayval.to.x = x;
-  rayval.from.y = -lineheight / 2 + SCREEN_HEIGHT / 2;
+  rayval.from.y = -lineheight / 2 + tab.buffer->height / 2;
   if (rayval.from.y < 0)
     rayval.from.y = 0;
-  rayval.to.y = lineheight / 2 + SCREEN_HEIGHT / 2;
+  rayval.to.y = lineheight / 2 + tab.buffer->height / 2;
   if (rayval.to.y >= SCREEN_HEIGHT)
     rayval.to.y = SCREEN_HEIGHT - 1;
   return (rayval);

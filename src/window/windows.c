@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Mar Dec 6 17:42:42 2016 Julian Ladjani
-** Last update Jan Jan 15 17:39:23 2017 Julian Ladjani
+** Last update Jan Jan 15 22:49:01 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -41,14 +41,15 @@ void			set_sprite(t_my_framebuffer *buffer,
 			     buffer->width, buffer->height, 0, 0);
 }
 
-int			my_event()
+int			my_event(t_int_tab tab)
 {
   if (sfKeyboard_isKeyPressed(sfKeyZ) ||
       sfKeyboard_isKeyPressed(sfKeyQ) ||
       sfKeyboard_isKeyPressed(sfKeyS) ||
       sfKeyboard_isKeyPressed(sfKeyD) ||
       sfKeyboard_isKeyPressed(sfKeyA) ||
-      sfKeyboard_isKeyPressed(sfKeyE))
+      sfKeyboard_isKeyPressed(sfKeyE) ||
+      my_mouse(tab) > 0)
     return (1);
   return (0);
 }
@@ -56,27 +57,11 @@ int			my_event()
 void			my_window(sfRenderWindow *window, sfSprite *sprite,
 				  t_int_tab tab, sfTexture *texture)
 {
-  sfEvent		event;
-
   while (sfRenderWindow_isOpen(window))
     {
-      while (sfRenderWindow_pollEvent(window, &event))
-	{
-	  if (event.type == sfEvtClosed || event.key.code == sfKeyEscape)
-	    sfRenderWindow_close(window);
-	}
-      while (my_event() == 1)
-	{
-	  init_framebuffer(tab.buffer);
-	  tab = action_bonus(tab, event);
-	  draw_wireframe(tab);
-	  set_sprite(tab.buffer, sprite, texture);
-          sfRenderWindow_clear(window, sfBlack);
-          sfRenderWindow_drawSprite(window, sprite, NULL);
-          sfRenderWindow_display(window);
-	}
+      tab = my_window2(window, sprite, tab, texture);
       sfRenderWindow_setMouseCursorVisible(window, sfFalse);
-      sfRenderWindow_clear(window, sfBlack);
+      sfRenderWindow_clear(window, tab.colorreset);
       sfRenderWindow_drawSprite(window, sprite, NULL);
       sfRenderWindow_display(window);
     }
