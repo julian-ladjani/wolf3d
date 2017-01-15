@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Jul Dec 10 18:55:30 2016 Julian Ladjani
-** Last update Jan Jan 15 23:33:43 2017 Julian Ladjani
+** Last update Jan Jan 15 23:35:39 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -45,9 +45,11 @@ t_int_tab	move_rightleft(t_int_tab tab)
     speed = tab.walk;
   if (sfKeyboard_isKeyPressed(sfKeyQ))
     {
-      if (tab.tab[(int)tab.pos.x][(int)(tab.pos.y + fabs(tab.dir.x) * speed)] < 1)
+      if (tab.tab[(int)tab.pos.x]
+	  [(int)(tab.pos.y + fabs(tab.dir.x)* speed)] < 1)
 	tab.pos.y += fabs(tab.dir.x) * speed;
-      if (tab.tab[(int)(tab.pos.x + fabs(tab.dir.y) * speed)][(int)tab.pos.y] < 1)
+      if (tab.tab[(int)(tab.pos.x + fabs(tab.dir.y) * speed)]
+	  [(int)tab.pos.y] < 1)
 	tab.pos.x += fabs(tab.dir.y) * speed;
     }
   else if (sfKeyboard_isKeyPressed(sfKeyD))
@@ -78,8 +80,10 @@ t_int_tab	move_dir(t_int_tab tab)
     }
   else if (sfKeyboard_isKeyPressed(sfKeyE) || my_mouse(tab) == 2)
     {
-      tab.dir.x = tab.dir.x * cos(-tab.rotspeed) - tab.dir.y * sin(-tab.rotspeed);
-      tab.dir.y = dirtmp * sin(-tab.rotspeed) + tab.dir.y * cos(-tab.rotspeed);
+      tab.dir.x = tab.dir.x * cos(-tab.rotspeed) -
+	  tab.dir.y * sin(-tab.rotspeed);
+      tab.dir.y = dirtmp * sin(-tab.rotspeed) +
+	  tab.dir.y * cos(-tab.rotspeed);
       tab.plane.x = tab.plane.x * cos(-tab.rotspeed) -
 	  tab.plane.y * sin(-tab.rotspeed);
       tab.plane.y = planetmp * sin(-tab.rotspeed) +
