@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Mar Dec 6 17:39:54 2016 Julian Ladjani
-** Last update Jan Jan 15 22:47:33 2017 Julian Ladjani
+** Last update Jan Jan 15 23:30:05 2017 Julian Ladjani
 */
 
 #ifndef MY_H_
@@ -110,6 +110,7 @@ t_int_tab			player_pos(t_int_tab tab);
 t_int_tab			my_window2(sfRenderWindow *window,
 					   sfSprite *sprite,
 				  t_int_tab tab, sfTexture *texture);
+t_int_tab			my_game(t_int_tab tab);
 
 t_my_raycast			raycast(t_int_tab tab, t_my_raycast rayval, int x);
 t_my_raycast			calc_sidedist(t_my_raycast rayval);

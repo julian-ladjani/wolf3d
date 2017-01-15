@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Mar Dec 6 17:42:42 2016 Julian Ladjani
-** Last update Jan Jan 15 22:49:01 2017 Julian Ladjani
+** Last update Jan Jan 15 23:30:55 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -49,7 +49,8 @@ int			my_event(t_int_tab tab)
       sfKeyboard_isKeyPressed(sfKeyD) ||
       sfKeyboard_isKeyPressed(sfKeyA) ||
       sfKeyboard_isKeyPressed(sfKeyE) ||
-      my_mouse(tab) > 0)
+      my_mouse(tab) > 0 ||
+      sfMouse_isButtonPressed(sfMouseLeft))
     return (1);
   return (0);
 }

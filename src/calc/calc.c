@@ -5,7 +5,7 @@
 ** Login  <julian.ladjani@epitech.eu>
 **
 ** Started on  Jun Dec 9 14:16:17 2016 Julian Ladjani
-** Last update Jan Jan 15 22:48:44 2017 Julian Ladjani
+** Last update Jan Jan 15 23:20:50 2017 Julian Ladjani
 */
 
 #include "my.h"
@@ -34,7 +34,7 @@ t_int_tab	player_pos(t_int_tab tab)
 
 t_int_tab	my_color(t_int_tab tab)
 {
-  if ((tab.color = malloc(9 * sizeof(sfColor) + 1)) != NULL)
+  if ((tab.color = malloc(17 * sizeof(sfColor) + 1)) != NULL)
     {
       tab.color[0] = sfTransparent;
       tab.color[1] = sfRed;
@@ -45,6 +45,14 @@ t_int_tab	my_color(t_int_tab tab)
       tab.color[6] = sfCyan;
       tab.color[7] = sfMagenta;
       tab.color[8] = sfBlack;
+      tab.color[9] = sfTransparent;
+      tab.color[10] = sfRed;
+      tab.color[11] = sfBlue;
+      tab.color[12] = sfGreen;
+      tab.color[13] = sfWhite;
+      tab.color[14] = sfYellow;
+      tab.color[15] = sfMagenta;
+      tab.color[16] = sfBlack;
     }
   tab.colorreset.r = 0;
   tab.colorreset.g = 80;
