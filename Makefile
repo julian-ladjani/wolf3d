@@ -5,7 +5,7 @@
 ## Login   <julian.ladjani@epitech.net>
 ##
 ## Started on  Mon Nov  7 16:31:28 2016 julian ladjani
-## Last update Jan Jan 15 22:31:05 2017 Julian Ladjani
+## Last update Mon May 22 16:13:48 2017 Ladjani Julian
 ##
 
 CC 		=	gcc -O2
@@ -39,7 +39,7 @@ NAME 		=	wolf3d
 all:			$(NAME)
 
 $(NAME):		$(OBJ)
-			$(CC) -o $(NAME) $(OBJ) -lc_graph_prog -lm -L$(LIBDIR) -lmy
+			$(CC) -o $(NAME) $(OBJ) -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm -L$(LIBDIR) -lmy
 
 clean:
 			$(RM) $(OBJ)
